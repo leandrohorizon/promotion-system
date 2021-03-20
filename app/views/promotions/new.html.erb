@@ -1,4 +1,14 @@
 <h1>Registrar uma promoção</h1>
+
+<% if @promotion.errors.any? %>
+  <h4>Não foi possível salvar, encontramos alguns erros</h4>
+  <ul>
+    <% @promotion.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @promotion do |f| %>
   <div>
     <%= f.label :name, 'Nome' %>
@@ -17,7 +27,7 @@
   
   <div>
     <%= f.label :discount_rate, 'Desconto' %>
-    <%= f.number_field :discount_rate in: 0..100 %>
+    <%= f.number_field :discount_rate, in: 0..100 %>
   </div>
   
   <div>
