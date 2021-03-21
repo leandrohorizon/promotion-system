@@ -1,0 +1,14 @@
+<% if @product_categories.empty? %>
+  <h3>Nenhuma categoria de produto cadastrada</h3>
+<% end %>
+
+<% @product_categories.each do |category| %>
+  <dl>
+    <dt>Nome da categoria</dt>
+    <h3><%= link_to category.name, category %></h3>
+    <dt>Código</dt>
+    <dd><%= category.code %></dd>
+  </dl>
+<% end %>
+
+<%= link_to 'Criar categoria de produto', new_product_category_path %>
