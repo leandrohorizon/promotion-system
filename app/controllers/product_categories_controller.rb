@@ -12,7 +12,7 @@ class ProductCategoriesController < ApplicationController
   end
 
   def create
-    @product_category = ProductCategory.create(set_params)
+    @product_category = ProductCategory.create(product_category_params)
     if @product_category.save
       redirect_to @product_category
     else
@@ -40,7 +40,7 @@ class ProductCategoriesController < ApplicationController
   end
 
   private
-    def set_params
+    def product_category_params
       params
         .require(:product_category)
         .permit(:name, :code)      
