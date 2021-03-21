@@ -4,7 +4,7 @@ class PromotionsController < ApplicationController
   end
 
   def show
-    @promotion = Promotion.find(params[:id])
+    set_promotion
   end
 
   def new
@@ -21,7 +21,7 @@ class PromotionsController < ApplicationController
   end
 
   def generate_coupons
-    @promotion = Promotion.find(params[:id])
+    set_promotion
 
     (1..@promotion.coupon_quantity).each do |number|
       Coupon.create!(code: "#{@promotion.code}-#{'%04d' % number}", promotion: @promotion)
@@ -31,11 +31,26 @@ class PromotionsController < ApplicationController
     redirect_to @promotion
   end
 
+  def edit
+    set_promotion
+  end
+
+  def update
+    set_promotion
+    if @promotion.update(promotion_params)
+      redirect_to promotion_path(@promotion)
+    end
+  end
+
   private
     def promotion_params
       params
         .require(:promotion)
         .permit(:name, :expiration_date, :description, 
                 :discount_rate, :code, :coupon_quantity)
+    end
+
+    def set_promotion
+      @promotion = Promotion.find(params[:id])
     end
 end
