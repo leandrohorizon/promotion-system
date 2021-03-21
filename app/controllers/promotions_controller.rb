@@ -37,8 +37,10 @@ class PromotionsController < ApplicationController
 
   def update
     set_promotion
-    if @promotion.update(promotion_params)
+    if @promotion.update(promotion_params) && @promotion.save
       redirect_to promotion_path(@promotion)
+    else
+      render :edit
     end
   end
 
