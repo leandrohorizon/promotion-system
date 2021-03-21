@@ -20,6 +20,7 @@
 <% end %>
 
 <%= link_to 'Editar Promoção', edit_promotion_path %>
+<%= link_to 'Apagar Promoção', promotion_path(@promotion), method: :delete  %>
 
 <% @promotion.coupons.each do |coupon| %>
     <p><%= coupon.code %></p>

@@ -161,4 +161,40 @@ class PromotionsTest < ApplicationSystemTestCase
     assert_text '22/12/2033'
     assert_text '5'
   end
+
+  test 'update and attributes cannot be blank' do
+    promotion = Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
+                      code: 'NATAL10', discount_rate: 10, coupon_quantity: 100,
+                      expiration_date: '22/12/2033')
+
+    visit promotion_path(promotion)
+
+    click_on 'Editar Promoção'
+    fill_in 'Nome', with: ''
+    fill_in 'Descrição', with: ''
+    fill_in 'Código', with: ''
+    fill_in 'Desconto', with: ''
+    fill_in 'Quantidade de cupons', with: ''
+    fill_in 'Data de término', with: ''
+
+    click_on 'Update Promotion'
+
+    assert_text 'não pode ficar em branco', count: 5
+  end
+
+  test 'delete promotion' do
+    promotion = Promotion.create!(name: 'Pascoa', description: 'Promoção de Pascoa',
+                      code: 'PASCOA20', discount_rate: 30, coupon_quantity: 100,
+                      expiration_date: '22/12/2050')
+    
+    visit promotion_path(promotion)
+    click_on 'Apagar Promoção'
+
+    assert_no_text 'PASCOA'
+    assert_no_text 'Promoção de PASCOA'
+    assert_no_text '30,00%'
+    assert_no_text 'PASCOA20'
+    assert_no_text '22/12/2050'
+    assert_no_text '30'
+  end
 end
