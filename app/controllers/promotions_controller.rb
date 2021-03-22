@@ -23,8 +23,8 @@ class PromotionsController < ApplicationController
   end
 
   def generate_coupons
-    @promotion.generate_cupons!
-    redirect_to @promotion, notice: 'Cupons gerados com sucesso'
+    @promotion.generate_coupons!
+    redirect_to @promotion, notice: t('.success')
   end
 
   def edit

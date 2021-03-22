@@ -1,11 +1,11 @@
 class Promotion < ApplicationRecord
   has_many :coupons
 
-  validates :name, :code, :discount_rate, :coupon_quantity, :expiration_date, presence: { message: 'não pode ficar em branco' }
+  validates :name, :code, :discount_rate, :coupon_quantity, :expiration_date, presence: true
   
-  validates :code, uniqueness: { message: 'deve ser único' }
+  validates :code, uniqueness: true
 
-  def generate_cupons!
+  def generate_coupons!
     # return unless coupons.empty? #guard close
     return if coupons? #guard close
 

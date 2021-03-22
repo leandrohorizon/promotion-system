@@ -22,7 +22,7 @@ class PromotionTest < ActiveSupport::TestCase
     promotion = Promotion.new(code: 'NATAL10')
 
     refute promotion.valid?
-    assert_includes promotion.errors[:code], 'deve ser único'
+    assert_includes promotion.errors[:code], 'já está em uso'
   end
 
   test 'generate_coupons! succesfully' do
@@ -33,7 +33,7 @@ class PromotionTest < ActiveSupport::TestCase
     promotion.generate_coupons!
     # assert promotion.coupons.size == promotion.coupon_quantity
     assert_equal promotion.coupons.size, promotion.coupon_quantity
-    assert_equal promotion.coupon.first.code, 'NATAL10-0001'
+    assert_equal promotion.coupons.first.code, 'NATAL10-0001'
   end
 
   test 'generate_coupons! cannot be called twice' do
@@ -43,7 +43,7 @@ class PromotionTest < ActiveSupport::TestCase
 
     Coupon.create!(code: 'BLABLABLA', promotion: promotion)
     assert_no_difference 'Coupon.count' do
-      promotion.generate_coupons
+      promotion.generate_coupons!
     end
   end
 end
