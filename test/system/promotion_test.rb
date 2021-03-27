@@ -197,4 +197,15 @@ class PromotionsTest < ApplicationSystemTestCase
     assert_no_text '22/12/2050'
     assert_no_text '30'
   end
+
+  test 'do not view promotion link' do
+    visit root_path
+    assert_no_link 'Promoções'
+  end
+
+  test 'do not view promotions using route without logi' do
+    visit promotion_path
+
+    assert_current_path new_user_session_path
+  end
 end
