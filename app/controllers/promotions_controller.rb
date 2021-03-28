@@ -1,4 +1,5 @@
 class PromotionsController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :show, :new, :create, :generate_coupons]
   before_action :set_promotion, only: [:show, :generate_coupons, :edit, :update, :destroy]
   # before_action :set_promotion, only: %i[show generate_coupons]
 

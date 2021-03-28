@@ -1,4 +1,3 @@
-<%= flash[:notice] %>
 <%= link_to 'Voltar', promotions_path %>
 
 <h3><%= @promotion.name %></h3>
@@ -22,6 +21,7 @@
 <%= link_to 'Editar Promoção', edit_promotion_path %>
 <%= link_to 'Apagar Promoção', promotion_path(@promotion), method: :delete  %>
 
+<%= @promotion.coupons.size %>
 <% @promotion.coupons.each do |coupon| %>
     <div id="coupon-<%= coupon.code.parameterize %>">       
         <p><%= coupon.code %> (<%= Coupon.human_attribute_name("status.#{coupon.status}") %>)</p>
