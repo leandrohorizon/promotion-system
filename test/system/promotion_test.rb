@@ -210,6 +210,33 @@ class PromotionsTest < ApplicationSystemTestCase
     assert_no_text '30'
   end
 
+  test 'search promotions by term and finds results' do
+    christmas = Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
+                                  code: 'NATAL10', discount_rate: 10, coupon_quantity: 100,
+                                  expiration_date: '22/12/2033')
+
+    xmas = Promotion.create!(name: 'Natalina', description: 'Promoção de Natal',
+                            code: 'NATAL11', discount_rate: 10, coupon_quantity: 100,
+                            expiration_date: '22/12/2033')
+
+    pascoa = Promotion.create!(name: 'Pascoal', description: 'Promoção de Pascoa',
+                                  code: 'PASCOA20', discount_rate: 30, coupon_quantity: 100,
+                                  expiration_date: '22/12/2050')
+
+    login_user
+    visit root_path
+    click_on 'Promoções'
+    fill_in 'Busca', with: 'Natal'
+    click_on 'Buscar'
+
+    assert_text christmas.name
+    assert_text xmas.name
+    assert_no_text pascoa.name
+  end
+
+  #TODO: não encontra nada
+  #TODO: visitar página sem estar logado
+
   test 'do not view promotion link without login' do
     visit root_path
     assert_no_link 'Promoções'

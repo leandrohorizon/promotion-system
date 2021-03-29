@@ -27,6 +27,8 @@
         <p><%= coupon.code %> (<%= Coupon.human_attribute_name("status.#{coupon.status}") %>)</p>
         <% if coupon.active? %>
             <%= link_to 'Desabilitar', disable_coupon_path(coupon), method: :post, data: { disable_with: 'Estamos desabilitando....' } %>
+        <% else %>
+            <%= link_to 'Habilitar', active_coupon_path(coupon), method: :post, data: { disable_with: 'Habilitando cupom....' } %>
         <% end %>
     </div>
 <% end %>

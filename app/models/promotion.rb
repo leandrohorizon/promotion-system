@@ -19,4 +19,20 @@ class Promotion < ApplicationRecord
   def coupons?
     coupons.any?
   end
+  
+  SEARCHABLE_FIELD = %w[name code description].freeze
+  def self.search(query)
+    # Promotion.where(name: query)
+    # where(name: query)
+
+    # where('name LIKE :query', query: "%LOWER(#{query})%")
+    # where('name LIKE ?', "%LOWER(#{query})%") # .limit(5)
+
+    where(
+      SEARCHABLE_FIELD
+      .map { |field| "#{field} LIKE :query" }
+      .join(' OR '),
+      query: "%#{query}%")
+      .limit(5)
+  end
 end

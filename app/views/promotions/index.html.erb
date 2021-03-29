@@ -1,6 +1,16 @@
 <%= link_to 'Voltar', root_path %>
 <%#= !@promotions.empty? || 'Nenhuma promoção cadastrada' %>
 
+<% if params[:query] %>
+  <%= "#{@promotions.count} resultado(s) encontrado(s) para o termo: #{params[:query]}" %>
+<% end %>
+
+<%= form_with url: search_promotions_path, method: :get do |f| %>
+  <%= f.label :query, 'Busca' %>
+  <%= f.text_field :query %>
+  <%= f.submit 'Buscar' %>
+<% end %>
+
 <% if @promotions.empty? %>
   <h3>Nenhuma promoção cadastrada</h3>
 <% end %>

@@ -44,6 +44,11 @@ class PromotionsController < ApplicationController
     redirect_to promotions_path
   end
 
+  def search
+    @promotions = Promotion.search(params[:query])
+    render :index
+  end
+
   private
     def promotion_params
       params
