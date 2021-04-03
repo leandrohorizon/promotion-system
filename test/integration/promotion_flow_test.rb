@@ -37,13 +37,15 @@ class PromotionFlowTest < ActionDispatch::IntegrationTest
   end
 
   test 'cannot generate coupons without login' do
+    user = User.create!(email: 'test@iugu.com.br', password: 'password')
     promotion = Promotion.create!(
       name: 'Natal',
       description: 'Promoção de natal',
       code: 'NATAL10',
       discount_rate: 15,
       coupon_quantity: 5,
-      expiration_date: '22/12/2033'
+      expiration_date: '22/12/2033',
+      user: user
     )
 
     post generate_coupons_promotion_path(promotion)
@@ -53,4 +55,17 @@ class PromotionFlowTest < ActionDispatch::IntegrationTest
 
   # TODO: teste do update sem login
   # TODO: teste do destroy sem login
+  # TODO: teste de login de aprovação
+
+  test 'cannot approve if owner' do
+    user = User.create!(email: 'test@iugu.com.br', password: 'password')
+    promotion = Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
+                                  code: 'NATAL10', discount_rate: 10, coupon_quantity: 100,
+                                  expiration_date: '22/12/2033', user: user)
+    login_user(user)
+    post approve_promotion_path(promotion)
+    assert_redirected_to promotion_path(promotion)
+    # refute promotion
+    assert_equal 'Ação não permitida', flash[:alert]
+  end
 end
