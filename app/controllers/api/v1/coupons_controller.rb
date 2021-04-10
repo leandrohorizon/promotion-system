@@ -7,5 +7,6 @@ class Api::V1::CouponsController < Api::V1::ApiController # modulo api modulo v1
     # render status: :success, json: @coupon.to_json
 
     render json: @coupon # .to_json
+    render json: @coupon.as_json(except: [:promotion_id], include: [:promotion])
   end
 end
