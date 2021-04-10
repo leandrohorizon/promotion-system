@@ -20,7 +20,8 @@ Rails.application.routes.draw do
 
   resources :product_categories
 
-  namespace :api do
+  namespace :api, constraints: lambda { |req| req.format == :json } do
+  # namespace :api, constraints: -> (req) { req.format == :json } do
     namespace :v1 do
       resources :coupons, only: [:show], param: :code
     end

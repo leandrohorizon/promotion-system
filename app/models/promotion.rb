@@ -24,6 +24,8 @@ class Promotion < ApplicationRecord
   end
   
   SEARCHABLE_FIELD = %w[name code description].freeze
+
+  # scope :search, -> (query){ ... } mesma coisa que
   def self.search(query)
     # Promotion.where(name: query)
     # where(name: query)
@@ -38,6 +40,8 @@ class Promotion < ApplicationRecord
       query: "%#{query}%")
       .limit(5)
   end
+
+  scope :available, -> { where('expiration_date >= ?', Time.zone.now) }
 
   def approved?
     promotion_approval.present?
