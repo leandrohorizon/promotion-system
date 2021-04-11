@@ -40,13 +40,14 @@ class ProductCategoriesController < ApplicationController
   end
 
   private
-    def product_category_params
-      params
-        .require(:product_category)
-        .permit(:name, :code)      
-    end
 
-    def set_product_category
-      @product_category = ProductCategory.find(params[:id])
-    end
+  def product_category_params
+    params
+      .require(:product_category)
+      .permit(:name, :code)
+  end
+
+  def set_product_category
+    @product_category = ProductCategory.find(params[:id])
+  end
 end

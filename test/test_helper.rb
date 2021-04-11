@@ -1,9 +1,14 @@
 ENV['RAILS_ENV'] ||= 'test'
-require_relative "../config/environment"
-require "rails/test_help"
-require "login_helper"
+
+require 'simplecov'
+SimpleCov.start 'rails'
+
+require_relative '../config/environment'
+require 'rails/test_help'
+require 'login_helper'
 
 class ActiveSupport::TestCase
+  include ActionMailer::TestHelper
   include Warden::Test::Helpers
   include LoginHelper
   # Run tests in parallel with specified workers

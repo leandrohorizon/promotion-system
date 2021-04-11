@@ -1,10 +1,10 @@
-require "test_helper"
+require 'test_helper'
 
 class PromotionTest < ActiveSupport::TestCase
   test 'attributes cannot be blank' do
     promotion = Promotion.new
 
-    refute promotion.valid?
+    assert_not promotion.valid?
     assert_includes promotion.errors[:name], 'não pode ficar em branco'
     assert_includes promotion.errors[:code], 'não pode ficar em branco'
     assert_includes promotion.errors[:discount_rate], 'não pode ficar em '\
@@ -22,7 +22,7 @@ class PromotionTest < ActiveSupport::TestCase
                       expiration_date: '22/12/2033', user: user)
     promotion = Promotion.new(code: 'NATAL10')
 
-    refute promotion.valid?
+    assert_not promotion.valid?
     assert_includes promotion.errors[:code], 'já está em uso'
   end
 
@@ -31,7 +31,7 @@ class PromotionTest < ActiveSupport::TestCase
     promotion = Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
                                   code: 'NATAL10', discount_rate: 10, coupon_quantity: 100,
                                   expiration_date: '22/12/2033', user: user)
-    
+
     promotion.generate_coupons!
     # assert promotion.coupons.size == promotion.coupon_quantity
     assert_equal promotion.coupons.size, promotion.coupon_quantity
@@ -57,12 +57,12 @@ class PromotionTest < ActiveSupport::TestCase
                                   expiration_date: '22/12/2033', user: user)
 
     pascoa = Promotion.create!(name: 'Pascoa', description: 'Promoção de Pascoa',
-                                  code: 'PASCOA20', discount_rate: 30, coupon_quantity: 100,
-                                  expiration_date: '22/12/2050', user: user)
+                               code: 'PASCOA20', discount_rate: 30, coupon_quantity: 100,
+                               expiration_date: '22/12/2050', user: user)
 
     result = Promotion.search('Natal')
     assert_includes result, christmas
-    refute_includes result, pascoa
+    assert_not_includes result, pascoa
   end
 
   test '.search promotions by partial' do
@@ -72,17 +72,17 @@ class PromotionTest < ActiveSupport::TestCase
                                   expiration_date: '22/12/2033', user: user)
 
     xmas = Promotion.create!(name: 'Natalina', description: 'Promoção de Natal',
-                            code: 'NATAL11', discount_rate: 10, coupon_quantity: 100,
-                            expiration_date: '22/12/2033', user: user)
+                             code: 'NATAL11', discount_rate: 10, coupon_quantity: 100,
+                             expiration_date: '22/12/2033', user: user)
 
     pascoa = Promotion.create!(name: 'Pascoal', description: 'Promoção de Pascoa',
-                                  code: 'PASCOA20', discount_rate: 30, coupon_quantity: 100,
-                                  expiration_date: '22/12/2050', user: user)
+                               code: 'PASCOA20', discount_rate: 30, coupon_quantity: 100,
+                               expiration_date: '22/12/2050', user: user)
 
     result = Promotion.search('Natal')
     assert_includes result, christmas
     assert_includes result, xmas
-    refute_includes result, pascoa
+    assert_not_includes result, pascoa
   end
 
   test '.search find nothing' do
@@ -92,12 +92,12 @@ class PromotionTest < ActiveSupport::TestCase
                                   expiration_date: '22/12/2033', user: user)
 
     xmas = Promotion.create!(name: 'Natalina', description: 'Promoção de Natal',
-                            code: 'NATAL11', discount_rate: 10, coupon_quantity: 100,
-                            expiration_date: '22/12/2033', user: user)
+                             code: 'NATAL11', discount_rate: 10, coupon_quantity: 100,
+                             expiration_date: '22/12/2033', user: user)
 
     pascoa = Promotion.create!(name: 'Pascoal', description: 'Promoção de Pascoa',
-                                  code: 'PASCOA20', discount_rate: 30, coupon_quantity: 100,
-                                  expiration_date: '22/12/2050', user: user)
+                               code: 'PASCOA20', discount_rate: 30, coupon_quantity: 100,
+                               expiration_date: '22/12/2050', user: user)
 
     result = Promotion.search('carnaval')
     assert_empty result

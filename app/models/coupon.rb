@@ -2,7 +2,7 @@ class Coupon < ApplicationRecord
   belongs_to :promotion
 
   # enum status: [:active, :disabled]
-  enum status: { 
+  enum status: {
     active: 0,
     disabled: 10,
     used: 30

@@ -1,0 +1,409 @@
+{
+  "Minitest": {
+    "coverage": {
+      "/home/leanddro/workspace/promotion-system/app/jobs/application_job.rb": {
+        "lines": [
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/leanddro/workspace/promotion-system/app/models/user.rb": {
+        "lines": [
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/leanddro/workspace/promotion-system/app/models/promotion.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/leanddro/workspace/promotion-system/app/models/coupon.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/leanddro/workspace/promotion-system/app/models/product_category.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/leanddro/workspace/promotion-system/app/models/application_record.rb": {
+        "lines": [
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/leanddro/workspace/promotion-system/app/models/promotion_approval.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/leanddro/workspace/promotion-system/app/helpers/application_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/leanddro/workspace/promotion-system/app/controllers/application_controller.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/leanddro/workspace/promotion-system/app/controllers/api/v1/api_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/leanddro/workspace/promotion-system/app/controllers/api/v1/coupons_controller.rb": {
+        "lines": [
+          null,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/leanddro/workspace/promotion-system/app/controllers/product_categories_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/leanddro/workspace/promotion-system/app/controllers/promotions_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/leanddro/workspace/promotion-system/app/controllers/coupons_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/leanddro/workspace/promotion-system/app/controllers/home_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/leanddro/workspace/promotion-system/app/mailers/application_mailer.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      }
+    },
+    "timestamp": 1618142844
+  }
+}

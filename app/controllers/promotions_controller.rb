@@ -1,6 +1,6 @@
 class PromotionsController < ApplicationController
   before_action :authenticate_user! # , only: [:index, :show, :new, :create, :generate_coupons]
-  before_action :set_promotion, only: [:show, :generate_coupons, :edit, :update, :destroy, :approve]
+  before_action :set_promotion, only: %i[show generate_coupons edit update destroy approve]
   # before_action :set_promotion, only: %i[show generate_coupons]
 
   before_action :can_be_approved, only: [:approve]
@@ -9,9 +9,7 @@ class PromotionsController < ApplicationController
     @promotions = Promotion.all
   end
 
-  def show
-    
-  end
+  def show; end
 
   def new
     @promotion = Promotion.new
@@ -32,8 +30,7 @@ class PromotionsController < ApplicationController
     redirect_to @promotion, notice: t('.success')
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @promotion.update(promotion_params) && @promotion.save
@@ -60,18 +57,19 @@ class PromotionsController < ApplicationController
   end
 
   private
-    def promotion_params
-      params
-        .require(:promotion)
-        .permit(:name, :expiration_date, :description, 
-                :discount_rate, :code, :coupon_quantity)
-    end
 
-    def set_promotion
-      @promotion = Promotion.find(params[:id])
-    end
+  def promotion_params
+    params
+      .require(:promotion)
+      .permit(:name, :expiration_date, :description,
+              :discount_rate, :code, :coupon_quantity)
+  end
 
-    def can_be_approved
-      redirect_to @promotion, alert: 'Ação não permitida' unless @promotion.can_approve?(current_user)
-    end
+  def set_promotion
+    @promotion = Promotion.find(params[:id])
+  end
+
+  def can_be_approved
+    redirect_to @promotion, alert: 'Ação não permitida' unless @promotion.can_approve?(current_user)
+  end
 end
