@@ -22,9 +22,15 @@
       <% end %>
     </nav>
 
-    <p> <%= flash[:notice] %></p>
-    <p> <%= flash[:alert] %></p>
+    <div class="container">
+      <% if flash[:notice] %>
+        <div class="alert alert-info" role="alert">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <p> <%= flash[:alert] %></p>
+      <%= yield %>
+    </div>
     
-    <%= yield %>
   </body>
 </html>
